@@ -1,17 +1,17 @@
 #Front-End
 
-[firstpage] ()
+[firstpage] ( https://nazardoss.github.io/Basic-FE/firstpage )
 
 
-[flexbox_page] ()
+[flexbox_page] ( https://nazardoss.github.io/Basic-FE/flexbox_page )
 
 
-[grid] ()
+[grid] ( https://nazardoss.github.io/Basic-FE/grid )
 
 
-[flexbox] ()
+[flexbox] ( https://nazardoss.github.io/Basic-FE/flexbox )
 
 
-[Messenger] ()
+[Messenger] ( https://nazardoss.github.io/Basic-FE/Messenger )
 
 
