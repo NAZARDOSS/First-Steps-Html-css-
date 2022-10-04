@@ -3,7 +3,7 @@
 [firstpage] ()
 
 
-[flexbox_page] (file:///Users/nazardosmukhambetov/Desktop/Projects/index.html)
+[flexbox_page] ()
 
 
 [grid] ()
