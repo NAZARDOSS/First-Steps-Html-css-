@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+
+    <style>
+        html,body,.wrapper{
+            height:100%;
+
+        }
+        .header_left {
+            background-color: black;
+            grid-area: header_left;
+        }
+        .header {
+            background-color: aqua;
+            grid-area: header;
+        }
+        .header_right {
+            background-color: yellow ;
+            grid-area: header_right;
+        }
+        .aside_left {
+            background-color: blue;
+            grid-area: aside_left;
+        }
+        .main {
+            background-color: yellowgreen;
+            grid-area: main;
+        }
+        .footer {
+            background-color: blueviolet;
+            grid-area: footer;
+        }
+        .aside_right {
+            background-color: lightgreen;
+            grid-area: aside_right;
+        }
+        .main2 {
+            background-color: brown;
+            grid-area: main2;
+        }
+        .main1{
+            background-color: azure;
+            grid-area:1;
+        }
+
+
+        .wrapper {
+            display: grid;
+        grid-template-columns: 150px 1fr 1fr 150px;
+        grid-template-rows: repeat(4,1fr);
+        gap: 10px;
+        grid-template-areas:
+        "header_left header header header_right"
+        "aside_left main main aside_right"
+        "aside_left main1 main2 aside_right "
+        "footer footer footer aside_right  "
+   
+            
+            
+
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header_left">1</div>
+        <div class="header">2</div>
+        <div class="header_right">3</div>
+        <div class="aside_left">4</div>
+        <div class="main">5</div>
+        <div class="main2">6</div>
+        <div class="main3">7</div>
+        <div class="footer">8</div>
+        <div class="aside_right">9</div> 
+        
+    </div>
+    
+</body>
+</html>

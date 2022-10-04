@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESSENGER</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu&display=swap');
+
+        html,
+        body,
+        main, .wrapper
+         {
+            height: 100%;
+            
+        }
+
+        body {
+            font-family: 'Mukta', sans-serif;
+            margin: 0;
+            
+        }
+        span:hover {
+            color: rgb(101, 101, 224);;
+
+        }
+        button:hover {
+            cursor: pointer;
+            background-color: rgb(101, 101, 224);
+            color: white;
+        }
+        aside {
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Ubuntu', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgb(236, 243, 244);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+            width: 15%;
+            box-sizing: border-box;
+            grid-area: aside;
+        }
+       
+
+        .main {
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Ubuntu', sans-serif; 
+
+            height: max-content;
+            border-right: solid 1px black;
+            /* width: 300px; */
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 15%;
+            overflow-y: scroll;
+
+            box-sizing: border-box;
+            background-color: rgb(253, 255, 255);
+            grid-area: main;
+        }
+        li {
+            list-style-type: none;
+        }
+        .menu__text {
+            color: black
+        }
+        .menu__items {
+            width: 100%;
+        }
+       
+        a {
+            text-decoration: none;
+        }
+
+        .inbox__headline {
+            display: flex;
+            justify-content: space-around;
+        }
+
+
+        .inbox__button {
+            border-radius: 30%;
+            background-color: white;
+            margin-top: 30px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .tumbler {
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            background-color: rgb(228, 228, 228);
+            height: 30px;
+
+
+        }
+        .input, .search {outline: none;}
+        
+
+        .chat {
+            height: 100%;
+            border-right: 1px solid rgb(215, 215, 215);
+            overflow-y: hidden;
+            grid-area: chat;
+        }
+        .chat__figure {
+                width: 25px;
+            }
+
+        .block {
+            position: static;
+            text-align: center;
+            grid-area: panel;
+        }
+        .list__block {
+            
+            border-right: 3px solid red;
+            background-color: aliceblue;
+        }
+
+        .panel {
+
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .panel__items {
+            display: flex;
+
+
+        }
+
+        .speakers__info {
+            padding-top: 10px;
+            line-height: 0px;
+        }
+
+        .speakers__photo {
+            border-radius: 20%;
+            width: 80px;
+            height: 80px;
+        }
+
+        /* chat */
+        .header {
+            border-bottom: 1px solid rgba(253, 253, 253, 0.761);
+            display: flex;
+            justify-content: space-between;
+            height: 10%;
+            background-color: rgb(253, 255, 255);
+        }
+
+        .header__item {
+            display: flex;
+
+        }
+
+        .header__text {
+            padding-top: 5px;
+            line-height: 0px;
+            flex-direction: column;
+        }
+
+        .chat__area {
+            height: 80% ;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+
+
+        }
+        .chat__message {
+            max-width: 75%;
+            margin: 15px 5px;
+            display: flex;
+
+        }
+        .send__message {
+            margin-bottom: 20px;
+            padding-right: 15px;
+            text-align: right;
+            max-width: 60%;
+            margin: 10px 0 10px auto ;
+        }
+        .chat__date {
+            color: rgb(170, 175, 180);
+            font-size: 13px;
+            margin-left: 10px;
+        }
+        .your__message {
+           padding: 10px;
+           min-height: 20px;
+           background-color: rgb(228, 228, 228);
+           border-radius: 10px 10px 10px 4px;
+           
+        }
+        .my__message {
+            background-color: white ;
+            border-radius: 10px 10px 4px 10px;
+            padding: 10px;
+           
+            
+            
+            
+        }
+
+        .chat__main {
+            height: 100%;
+            background: rgb(2, 0, 36);
+            background: linear-gradient(278deg, rgba(2, 0, 36, 1) 0%, rgba(211, 211, 224, 1) 0%, rgba(255, 255, 255, 1) 100%, rgba(68, 212, 245, 1) 100%, rgba(0, 212, 255, 1) 100%);
+        }
+
+        .searching {
+            display: flex;
+            padding-right: 10px;
+
+        }
+
+        .header__search {
+            padding-right: 5px;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .search {
+            background-color: rgb(237, 238, 238);
+            border: none;
+            height: 2rem;
+            width: 200px;
+          
+        }
+
+        .search__item {
+            border: none;
+            height: 2rem;
+            width: 25px;
+
+        }
+
+        .header__buttoms {
+            padding-left: 10px;
+            margin-top: 3px;
+
+        }
+
+        .voice {
+            font-size: 1rem;
+            width: 35px;
+            height: 2rem;
+
+
+        }
+
+        .locate {
+            font-size: 1rem;
+            width: 35px;
+            height: 2rem;
+        }
+
+        .input {
+            font-size: 15px;
+            padding-left: 20px;
+            height: 5rem;
+            width: 20rem;
+            border: none;
+            background: none;
+        }
+
+        .input__area {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+        .input__items {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .input__photo {
+            font-size: 1rem;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        .input__voice {
+            font-size: 1rem;
+            margin-left: 5px;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        .input__send {
+            font-size: 1rem;
+            margin-left: 5px;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        .any {
+            font-size: 1rem;
+            margin-top: 15px;
+            height: 2rem;
+            width: 35px;
+
+
+        }
+
+        .block__down {
+            margin-top: 40rem;
+            line-height: 2rem;
+        }
+
+        .block__item {
+            font-size: 1rem;
+            height: 2rem;
+            width: 35px;
+        }
+
+        .list {
+            line-height: 4rem;
+        }
+         {}
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: 15% 30% auto 5%;
+            grid-template-rows: auto;
+            grid-template-areas:
+                "aside main chat panel";
+        }
+
+        figure {
+            height: 0px;
+            width: 60px;
+        }
+        
+        
+        
+        .projects__icon {
+            width: 15px;
+            height: 15px;
+            border-radius: 40%;
+            border: 2px solid orange;
+        }
+        .projects {
+            box-sizing: border-box;
+        }
+        .chat__img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .logo {
+            margin-top: 1rem;
+            display: flex;
+            font-size: 3rem;
+            
+        }
+        .name {
+            font-size: 2rem;
+        }
+        .file {
+            height: 30px;
+            width: 30px;
+        }
+        .online {
+        background-color: lightgreen;
+        width: 8px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 2px solid white;
+        position: absolute;
+        margin-top: 85px;
+        margin-left: 110px;
+        
+            
+
+        @media(max-width:938px){
+          aside{ width: 150px;
+
+
+
+            }
+            .logo {
+            left:0
+            }
+            .sidebar {
+                
+                transform: translateX(-300px);
+                transition: all .5s ease-out;
+
+            }
+
+            .sidebar--open {
+                transform: none;
+            }
+
+            .main {
+                left: 0%;
+            }
+
+            .wrapper {
+                display: grid;
+            grid-template-columns: 30% auto 5%;
+            grid-template-rows: auto;
+            grid-template-areas:
+                "main chat panel";
+            }
+          }
+
+                
+            
+        @media (max-width:777px) {
+            .speakers__info {
+                font-size: small;
+            }
+            figure{
+                width: 10px;
+            }
+            .speakers__photo {
+                width: 30px;
+                height: 30px;
+            }
+           
+            
+        }   
+        @media (max-width: 532px) {
+            .search {
+                height: 1rem;
+                width: 5rem;
+            }
+            .search__item{
+                height: 1rem;
+                width: 15px;
+                margin-top: 6px;
+            }
+            .voice {
+                height: 1rem;
+                width: 15px;
+                
+            }
+            .locate {
+                height: 1rem;
+                width: 15px;
+            }
+            .any {
+                height: 1.5rem;
+                width: 25px;
+                margin-left: 3px; 
+            }
+            .block__item {
+                height: 1.5rem;
+                width: 25px;
+                margin-left: 3px; 
+            }
+
+        }
+        @media (max-hight: 768) {
+            
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside class="sidebar ">
+            
+                <div class="logo"><i class="las la-cube"></i> <div class= "name">Shark</div>
+                </div>
+            
+            <button class="menu" onclick="toggleMenu()"><i class="las la-chevron-circle-down"></i></button>
+            <div class="menu__items">
+                <nav class="list">
+                <ul class="menu__list">
+                    
+                    <li class="menu__item">
+                        <a class="menu__link" href="">
+                            <span class="menu__icon">
+                                <i class="las la-school"></i>
+                            </span>
+                            <span class="menu__text">
+                                Dashboard
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="">
+                            <span class="menu__icon">
+                                <i class="las la-chart-line"></i>
+                            </span>
+                            <span class="menu__text">
+                                Statistic
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="menu__item">
+                        <a class="menu__link" href="">
+                            <span class="menu__icon">
+                                <i class="las la-question"></i>
+                            </span>
+                            <span class="menu__text">
+                                Support
+                            </span>
+                        </a>
+                    </li>
+                <div class="list__block">
+                    <li class="menu__item">
+                        <a class="menu__link" href="">
+                            <span class="menu__icon">
+                                <i class="las la-inbox"></i>
+                            </span>
+                            <span class="menu__text">
+                                Inbox
+                            </span>
+                        </a>
+                    </li>
+                </div>    
+                    <li class="menu__item">
+                        <a class="menu__link" href="">
+                            <span class="menu__icon">
+                                <i class="las la-rocket"></i>
+                            </span>
+                            <span class="menu__text">
+                                Goals
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="">
+                            <span class="menu__icon">
+                                <i class="las la-link"></i>
+                            </span>
+                            <span class="menu__text">
+                                Links
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+            <section class="projects">
+                <h4 class="projects__title">PROJECTS</h4>
+
+                <ul class="projects__list">
+                     <h5>Callipso</h5>
+                    
+                    <h5>BWS bank</h5>
+                    
+                    <h5>Unicorn app</h5>
+                    
+                    
+                    <h5>Salt</h5>
+                    
+                    
+
+                </ul>
+
+                <button class="button">Show more</button>
+            </section>
+        </aside>
+        <div class="main">
+            <div class="inbox">
+                <button class="menu" onclick="toggleMenu()"><i class="las la-bars"></i></button>
+                <div class="inbox__headline">
+                    <h1>Inbox</h1>
+                    <button class="inbox__button">+</button>
+
+                </div>
+
+                <div class="tumbler">
+
+                    <button>General</button>
+                    <button>Total</button>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="panel">
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn3.vectorstock.com/i/thumb-large/15/92/afro-man-avatar-character-male-face-on-blue-vector-31341592.jpg" alt="">
+                        
+                    </figure>
+                    <div class="online"></div>
+                    <div class="speakers__info">
+                        <h5>Michael.B</h5>
+                        <h6>Project manager</h6>
+                        <h6>Send you the file </h6>
+                    </div>
+
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn2.vectorstock.com/i/1000x1000/98/11/girl-icon-flat-single-avatarpeaople-icon-from-vector-14449811.jpg" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Johanna.L</h5>
+                        <h6>Market analyst </h6>
+                        <h6>Send you voice messahge </h6>
+                    </div>
+
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn.vectorstock.com/i/thumb-large/94/69/man-with-gray-beard-avatar-icon-vector-6759469.webp" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Mark.M</h5>
+                        <h6>JS Seniour</h6>
+                        <h6>Send you the file</h6>
+                    </div>
+
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn4.vectorstock.com/i/thumb-large/12/48/arab-muslim-man-with-beard-portrait-avatar-vector-41071248.jpg" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Michael.B</h5>
+                        <h6>Project manager</h6>
+                        <h6>Send </h6>
+                    </div>
+                    <div class="online"></div>
+
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn3.vectorstock.com/i/thumb-large/72/67/happy-smiling-businessman-cartoon-avatar-portrait-vector-41647267.jpg" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Michael.B</h5>
+                        <h6>Project manager</h6>
+                        <h6>Send you the file </h6>
+                    </div>
+
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn5.vectorstock.com/i/thumb-large/64/69/african-american-woman-avatar-on-red-vector-31326469.jpg" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Michael.B</h5>
+                        <h6>Project manager</h6>
+                        <h6>Send you the file </h6>
+                    </div>
+
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn.vectorstock.com/i/1000x1000/38/78/avatar-of-the-modern-woman-vector-15133878.webp" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Michael.B</h5>
+                        <h6>Project manager</h6>
+                        <h6>Send you the file </h6>
+                    </div>
+
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn2.vectorstock.com/i/thumb-large/48/36/muslim-businessman-avatar-arab-person-flat-icon-vector-40714836.jpg" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Michael.B</h5>
+                        <h6>Project manager</h6>
+                        <h6>Send you the file </h6>
+                    </div>
+                </div>
+                <div class="panel__items">
+                    <figure>
+                        <img class="speakers__photo" src="https://cdn.vectorstock.com/i/thumb-large/64/72/beautiful-avatar-blonde-girl-on-blue-vector-31326472.webp" alt="">
+                    </figure>
+                    <div class="speakers__info">
+                        <h5>Michael.B</h5>
+                        <h6>Project manager</h6>
+                        <h6>Send you the file </h6>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        
+       <nav class="chat">
+
+            <div class="header">
+                <div class="header__item">
+                    <figure class="chat__figure">
+                        <img class="chat__img" src="https://cdn3.vectorstock.com/i/thumb-large/15/92/afro-man-avatar-character-male-face-on-blue-vector-31341592.jpg" alt="">
+                    </figure>
+                    <div class="header__text">
+                        <h5>Michael.B</h5>
+                        <h6>Online</h6>
+                    </div>
+                </div>
+
+                <div class="header__search">
+                    <div class="searching">
+                        <form action="">
+                            <input class="search" type="search" placeholder="Search">
+                        </form>
+
+                        <button class="search__item">
+                            <i class="las la-search"></i>
+                        </button>
+                    </div>
+                    <div class="header__buttons">
+                        <button class="voice"><i class="las la-phone-volume"></i></button>
+                        <button class="locate"><i class="las la-video"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="chat__main">
+                
+                <div class="chat__area">
+                    <div class="chat__message">
+                        <span class="chat__date">
+                            October 2, Sunday 
+                        </span>
+                    </div>
+
+                    <div class="chat__message">
+                       <div class="your__message"> Hi Derek, how about your project? </div>
+                    </div>
+
+                    <div class="send__message">
+                        <div class="my__message">Hi Michael, in process 👌</div>
+                    </div> 
+
+                    <div class="chat__message">
+                        <div class="your__message"> Okey, how mach time do you need? </span>
+                     </div>
+                     </div>
+
+                     <div class="send__message">
+                        <div class="my__message">Until the end of the day. But i have one question about it. </div>
+                    </div> 
+
+                    <div class="send__message">
+                        <div class="my__message">What font are we using here?</div>
+                    </div> 
+
+                    <div class="chat__message">
+                        <div class="your__message"> Times New Roman </div>
+                     </div>
+                   
+                     <div class="send__message">
+                        <div class="my__message">OK</div>
+                    </div> 
+
+                    <div class="chat__message">
+                        <div class="chat__date">
+                            October 3, Monday
+                        </div>
+                    </div>    
+
+                        <div class="chat__message">
+                            <div class="your__message">
+
+                                <img class="file" src="https://www.encuesta.biz/wp-content/uploads/2020/04/Word-icon.png" alt="">
+                                
+                            </div>
+                            
+                         </div>
+                    
+
+                    
+
+
+
+                    
+                </div>
+                <div class="input__area">
+                    <form>
+                        <input class="input" type="text" placeholder="Write a message...">
+                    </form>
+                    <div class="input__items">
+                        <button class="input__photo"><i class="las la-photo-video"></i></button>
+                        <button class="input__voice"><i class="las la-microphone"></i></button>
+                        <button class="input__send"><i class="las la-paper-plane"></i></button>
+                    </div>
+                </div>
+             </div>
+        </nav>   
+        <div class="block">
+
+            <button class="any"><i class="las la-braille"></i></button>
+
+            <div class="block__down">
+                <div>
+                    <button class="block__item"><i class="las la-exclamation-circle"></i></button>
+                </div>
+                <div>
+                    <button class="block__item"><i class="las la-volume-mute"></i></button>
+                </div>
+                <div>
+                    <button class="block__item"><i class="las la-trash-alt"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+
+    <script>
+        function toggleMenu() {
+            var sidebar = document.querySelector('.sidebar');
+
+            sidebar.classList.toggle('sidebar--open');
+        }
+       
+
+    </script>
+</body>
+
+</html>
