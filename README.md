@@ -9,9 +9,6 @@
 [grid] ( https://nazardoss.github.io/First-Steps-Html-css-/grid )
 
 
-[flexbox] ( https://nazardoss.github.ioFirst-Steps-Html-css-/flexbox )
-
-
 [Messenger] ( https://nazardoss.github.io/First-Steps-Html-css-/Messenger )
 
 
